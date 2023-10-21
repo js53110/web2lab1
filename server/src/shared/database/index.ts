@@ -6,10 +6,15 @@ import TournamentModel from "../../tournament/tournament.model";
 import CompetitorModel from "../../competitor/competitor.model";
 import ScheduleModel from "../../schedule/schedule.model";
 
-const sequelize = new Sequelize("web2lab1", "postgres", "bazepodataka", {
-  dialect: "postgres",
-  host: "localhost",
-});
+const sequelize = new Sequelize(
+  "web2lab1_0uiy",
+  "web2lab1",
+  "TVAupXWusYv9TA5ppSJdWmOejUrr5gve",
+  {
+    dialect: "postgres",
+    host: "postgres://web2lab1:TVAupXWusYv9TA5ppSJdWmOejUrr5gve@dpg-ckpvfcu2eoec73fj70dg-a/web2lab1_0uiy",
+  }
+);
 
 const models = {
   User: defineModel(UserModel),
