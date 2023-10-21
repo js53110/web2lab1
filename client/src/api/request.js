@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const serverUri = "http://0.0.0.0:10000";
+const serverUri = "https://0.0.0.0:10000";
 
 const request = (accessToken) => {
   return axios.create({
