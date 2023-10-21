@@ -1,6 +1,8 @@
 import express from "express";
+import https from "https"; // Import the 'https' module
+import fs from "fs"; // Import the 'fs' module for file operations
 import cors from "cors";
-import { auth } from "express-oauth2-jwt-bearer"; //claimCheck, requireScope, ...
+import { auth } from "express-oauth2-jwt-bearer";
 import axios from "axios";
 import router from "./router";
 import sequelize from "./shared/database/index";
@@ -14,6 +16,15 @@ const authServer = "https://js53110.eu.auth0.com";
 app.use(bodyParser.json());
 
 app.use("/api", router);
+
+// Set up HTTPS options with your SSL certificate
+const httpsOptions = {
+  key: fs.readFileSync("../../server.key"),
+  cert: fs.readFileSync("../../server.cert"),
+};
+
+// Create an HTTPS server
+const httpsServer = https.createServer(httpsOptions, app);
 
 (async () => {
   console.log("Connecting to the database...");
@@ -36,6 +47,7 @@ app.use("/api", router);
 const hostname = "0.0.0.0";
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 4091;
 
-app.listen(port, hostname, () => {
-  console.log(`Web API running at http://${hostname}:${port}/`);
+// Listen on the HTTPS server instead of the app
+httpsServer.listen(port, hostname, () => {
+  console.log(`Web API running at https://${hostname}:${port}/`);
 });
