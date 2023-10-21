@@ -12,7 +12,7 @@ export default ({ command }) => {
     plugins: [svelte()],
 
     server: {
-      port: 4092,
+      port: process.env.PORT || 4092,
       https: command === "serve" && {
         key: fs.readFileSync("../server.key"), // Path to your private key file
         cert: fs.readFileSync("../server.cert"), // Path to your certificate file

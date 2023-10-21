@@ -33,8 +33,9 @@ app.use("/api", router);
   }
 })();
 
-const hostname = "localhost";
-const port = 4091;
+const hostname = "0.0.0.0";
+const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 4091;
+
 app.listen(port, hostname, () => {
   console.log(`Web API running at http://${hostname}:${port}/`);
 });
