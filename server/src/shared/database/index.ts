@@ -12,7 +12,8 @@ const sequelize = new Sequelize(
   "TVAupXWusYv9TA5ppSJdWmOejUrr5gve",
   {
     dialect: "postgres",
-    host: "postgres://web2lab1:TVAupXWusYv9TA5ppSJdWmOejUrr5gve@dpg-ckpvfcu2eoec73fj70dg-a.frankfurt-postgres.render.com/web2lab1_0uiy",
+    host: "postgres://web2lab1:TVAupXWusYv9TA5ppSJdWmOejUrr5gve@dpg-ckpvfcu2eoec73fj70dg-a/web2lab1_0uiy",
+    port: 5432,
   }
 );
 
