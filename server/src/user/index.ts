@@ -11,6 +11,10 @@ const jwtCheck = auth({
   tokenSigningAlg: "RS256",
 });
 
-router.post("/login", jwtCheck, login);
+const log = () => {
+  console.log("IN LOGIN");
+};
+
+router.post("/login", log, jwtCheck, login);
 
 export default { path, router };
