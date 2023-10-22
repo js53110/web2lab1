@@ -15,13 +15,6 @@ app.use(bodyParser.json());
 app.use("/api", router);
 
 // Set up HTTPS options with your SSL certificate
-const httpsOptions = {
-  key: fs.readFileSync("./server.key"),
-  cert: fs.readFileSync("./server.cert"),
-};
-
-// Create an HTTPS server
-const httpsServer = https.createServer(httpsOptions, app);
 
 (async () => {
   console.log("Connecting to the database...");
@@ -44,9 +37,9 @@ const httpsServer = https.createServer(httpsOptions, app);
 const port = 3000;
 const host = "0.0.0.0";
 
-httpsServer.listen(3000, "localhost", () => {
-  console.log("Web service running over HTTPS");
-  const address = httpsServer.address() as any; // Explicitly specify the type as 'any'
-  console.log(address.address);
-  console.log(address.port);
+const server = app.listen(port, "localhost", () => {
+  console.log("Web service running over HTTP");
+  const address = server.address() as any; // Explicitly specify the type as 'any'
+  console.log("address " + address.address);
+  console.log("port " + address.port);
 });
