@@ -10,7 +10,9 @@ export default ({ command }) => {
     plugins: [svelte()],
 
     server: {
-      port: process.env.PORT || 4092,
+      host: true,
+      strictPort: true,
+      port: 8000,
     },
   });
 };
