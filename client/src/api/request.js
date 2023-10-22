@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const serverHostname = "web2lab1-888d.onrender.com"; // Replace with your Render app's domain
+const serverHostname = "127.0.0.1"; // Replace with your Render app's domain
 const serverPort = 4091; // Use 443 for HTTPS
 
 const serverUri = `https://${serverHostname}:${serverPort}`;
