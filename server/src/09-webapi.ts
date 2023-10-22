@@ -45,12 +45,13 @@ const port = 3000;
 const host = "0.0.0.0";
 
 const server = app.listen(3000, () => {
-  const serverAddress = server.address();
+  console.log("Web service running");
+  /*const serverAddress = server.address();
   if (typeof serverAddress === "string") {
     console.error("Server address is a string, not available.");
   } else {
     console.log(
       `Express server started on host ${serverAddress?.address} and port ${serverAddress?.port}`
     );
-  }
+  }*/
 });
