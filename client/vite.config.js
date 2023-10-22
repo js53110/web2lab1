@@ -14,7 +14,7 @@ export default ({ command }) => {
     server: {
       host: true,
       strictPort: true,
-      port: 8000,
+      port: process.env.PORT,
       /*https: {
         key: fs.readFileSync("./server.key"),
         cert: fs.readFileSync("./server.cert"),
