@@ -44,5 +44,5 @@ const httpsServer = https.createServer(httpsOptions, app);
 const port = 3000;
 
 httpsServer.listen(port, () => {
-  console.log(`Web API running at https://${request.hostname}:${port}/`);
+  console.log(`Web API running at port:${port}/`);
 });
