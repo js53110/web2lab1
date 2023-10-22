@@ -44,6 +44,11 @@ const httpsServer = https.createServer(httpsOptions, app);
 const port = 3000;
 const host = "0.0.0.0";
 
-app.listen(port, host, () => {
-  console.log(`Web API running at port ${port}/`);
+const server = app.listen(3000, "0.0.0.0", () => {
+  const serverAddress = server.address();
+  if (typeof serverAddress === "string") {
+    console.error("Server address is a string, not available.");
+  } else {
+    console.log(`Express server started on host ${serverAddress}`);
+  }
 });
