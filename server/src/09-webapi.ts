@@ -43,6 +43,6 @@ const httpsServer = https.createServer(httpsOptions, app);
 
 const port = 3000;
 
-httpsServer.listen(port, () => {
+app.listen(port, () => {
   console.log(`Web API running at port:${port}/`);
 });
