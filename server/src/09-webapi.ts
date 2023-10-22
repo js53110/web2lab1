@@ -1,8 +1,7 @@
-import express from "express";
-import https from "https"; // Import the 'https' module
-import fs from "fs"; // Import the 'fs' module for file operations
+import express, { request } from "express";
+import https from "https";
+import fs from "fs";
 import cors from "cors";
-import { auth } from "express-oauth2-jwt-bearer";
 import axios from "axios";
 import router from "./router";
 import sequelize from "./shared/database/index";
@@ -10,8 +9,6 @@ import bodyParser from "body-parser";
 
 const app = express();
 app.use(cors());
-
-const authServer = "https://js53110.eu.auth0.com";
 
 app.use(bodyParser.json());
 
@@ -44,10 +41,8 @@ const httpsServer = https.createServer(httpsOptions, app);
   }
 })();
 
-const port = 3000;
-const host = process.env.RENDER_EXTERNAL_HOST || "localhost"; // Use "localhost" as a fallback
+const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 4091;
 
 httpsServer.listen(port, () => {
-  console.log("Running on protocol: " + location.protocol);
-  console.log(`Web API running at https://${host}:${port}/`);
+  console.log(`Web API running at https://${request.hostname}:${port}/`);
 });
