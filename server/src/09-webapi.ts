@@ -44,10 +44,7 @@ const httpsServer = https.createServer(httpsOptions, app);
   }
 })();
 
-const hostname = "0.0.0.0";
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 4091;
+const host = process.env.RENDER_EXTERNAL_HOST || "localhost"; // Use "localhost" as a fallback
 
-// Listen on the HTTPS server instead of the app
-httpsServer.listen(port, hostname, () => {
-  console.log(`Web API running at https://${hostname}:${port}/`);
-});
+console.log(`Web API running at https://${host}:${port}/`);

@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const serverUri = "https://0.0.0.0:10000";
+const serverHostname = "web2lab1-lacz.onrender.com"; // Replace with your Render app's domain
+const serverPort = 443; // Use 443 for HTTPS
+
+const serverUri = `https://${serverHostname}:${serverPort}/api`;
 
 const request = (accessToken) => {
   return axios.create({
