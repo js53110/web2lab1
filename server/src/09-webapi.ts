@@ -48,5 +48,6 @@ const port = 3000;
 const host = process.env.RENDER_EXTERNAL_HOST || "localhost"; // Use "localhost" as a fallback
 
 httpsServer.listen(port, () => {
+  console.log("Running on protocol: " + location.protocol);
   console.log(`Web API running at https://${host}:${port}/`);
 });
