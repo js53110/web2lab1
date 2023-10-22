@@ -1,8 +1,8 @@
-import express, { request } from "express";
-import https from "https";
-import fs from "fs";
+import express from "express";
+import https from "https"; // Import the 'https' module
+import fs from "fs"; // Import the 'fs' module for file operations
 import cors from "cors";
-import axios from "axios";
+import { auth } from "express-oauth2-jwt-bearer";
 import router from "./router";
 import sequelize from "./shared/database/index";
 import bodyParser from "body-parser";
@@ -10,11 +10,20 @@ import bodyParser from "body-parser";
 const app = express();
 app.use(cors());
 
+const authServer = "https://js53110.eu.auth0.com";
+
 app.use(bodyParser.json());
 
 app.use("/api", router);
 
 // Set up HTTPS options with your SSL certificate
+const httpsOptions = {
+  key: fs.readFileSync("./server.key"),
+  cert: fs.readFileSync("./server.cert"),
+};
+
+// Create an HTTPS server
+const httpsServer = https.createServer(httpsOptions, app);
 
 (async () => {
   console.log("Connecting to the database...");
@@ -34,13 +43,11 @@ app.use("/api", router);
   }
 })();
 
-const port = 3000;
-const host = "127.0.0.1";
+const port = 4091;
+const host = process.env.RENDER_EXTERNAL_HOST || "localhost"; // Use "localhost" as a fallback
 
-const server = app.listen(port, host, () => {
-  console.log("Web service running over HTTP");
-  const address = server.address() as any;
-  console.log("FFFF: " + address); // Explicitly specify the type as 'any'
-  console.log("address " + address.address);
-  console.log("port " + address.port);
+httpsServer.listen(port, host, () => {
+  console.log(`Listening on port ${port} on address ${host}`);
 });
+
+console.log(`Web API running at https://${host}:${port}/`);
