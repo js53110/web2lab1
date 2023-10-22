@@ -17,7 +17,7 @@ const fetchUserData = async (token) => {
 };
 
 const login = async (token) => {
-  console.log("Loginapi");
+  console.log("Sending request to login api");
   const customRequest = request(token);
   const res = await customRequest.post(urls.login, { token });
   return extractData(res);

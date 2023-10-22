@@ -3,6 +3,7 @@ import { User } from "../shared/database/index";
 import { CREATED } from "http-status";
 
 const login = async (req: any, res: any) => {
+  console.log("IN LOGIN API SERVER SIDE");
   const authServer = "https://js53110.eu.auth0.com";
   const accessToken = req.auth!.token;
   try {
