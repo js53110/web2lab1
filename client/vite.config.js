@@ -12,7 +12,7 @@ export default ({ command }) => {
     server: {
       host: true,
       strictPort: true,
-      port: process.env.PORT || 8000,
+      port: 8000,
     },
   });
 };
