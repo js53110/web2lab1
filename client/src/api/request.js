@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const serverHostname = "0.0.0.0"; // Replace with your Render app's domain
+const serverHostname = "localhost"; // Replace with your Render app's domain
 const serverPort = 10000; // Use 443 for HTTPS
 
 const serverUri = `https://${serverHostname}:${serverPort}`;
