@@ -44,11 +44,9 @@ const httpsServer = https.createServer(httpsOptions, app);
 const port = 3000;
 const host = "0.0.0.0";
 
-const srvhttps = httpsServer.listen(3000, () => {
+httpsServer.listen(3000, () => {
   console.log("Web service running over HTTPS");
-  const address = srvhttps.address();
-  console.log(address?.toString());
-  console.log(address?.valueOf);
+  const address = httpsServer.address() as any; // Explicitly specify the type as 'any'
+  console.log(address.address);
+  console.log(address.port);
 });
-
-
