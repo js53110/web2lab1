@@ -35,11 +35,12 @@ app.use("/api", router);
 })();
 
 const port = 3000;
-const host = "0.0.0.0";
+const host = "127.0.0.1";
 
-const server = app.listen(port, "localhost", () => {
+const server = app.listen(port, host, () => {
   console.log("Web service running over HTTP");
-  const address = server.address() as any; // Explicitly specify the type as 'any'
+  const address = server.address() as any;
+  console.log("FFFF: " + address); // Explicitly specify the type as 'any'
   console.log("address " + address.address);
   console.log("port " + address.port);
 });
