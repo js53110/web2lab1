@@ -44,7 +44,7 @@ const httpsServer = https.createServer(httpsOptions, app);
   }
 })();
 
-const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 4091;
+const port = 3000;
 const host = process.env.RENDER_EXTERNAL_HOST || "localhost"; // Use "localhost" as a fallback
 
 httpsServer.listen(port, () => {
