@@ -23,7 +23,7 @@ const httpsOptions = {
 };
 
 // Create an HTTPS server
-const httpsServer = https.createServer(httpsOptions, app);
+//const httpsServer = https.createServer(httpsOptions, app);
 
 (async () => {
   console.log("Connecting to the database...");
@@ -46,8 +46,6 @@ const httpsServer = https.createServer(httpsOptions, app);
 const port = 4091;
 const host = "";
 
-httpsServer.listen(port, host, () => {
-  console.log(`Listening on port ${port} on address ${host}`);
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
-
-console.log(`Web API running at https://${host}:${port}/`);
