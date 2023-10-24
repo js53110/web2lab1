@@ -15,6 +15,6 @@ const log = () => {
   console.log("IN LOGIN");
 };
 
-router.post("/login", log, login);
+router.post("/login", login);
 
 export default { path, router };
