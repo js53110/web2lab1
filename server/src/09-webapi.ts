@@ -44,7 +44,7 @@ const httpsServer = https.createServer(httpsOptions, app);
 })();
 
 const port = 4091;
-const host = "127.0.0.1"; // Use "localhost" as a fallback
+const host = "";
 
 httpsServer.listen(port, host, () => {
   console.log(`Listening on port ${port} on address ${host}`);

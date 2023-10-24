@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const serverHostname = "127.0.0.1"; // Replace with your Render app's domain
-const serverPort = 4091; // Use 443 for HTTPS
+const serverHostname = "";
+const serverPort = 4091;
 
 const serverUri = `https://${serverHostname}:${serverPort}`;
 
