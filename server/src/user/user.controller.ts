@@ -7,13 +7,13 @@ const login = async (req: any, res: any) => {
   console.log("IN LOGIN API SERVER SIDE");
   const authServer = "https://js53110.eu.auth0.com";
 
-  async () => {
+  /*async () => {
     auth({
       audience: "https://js53110.com", // Audience should match your Auth0 API
       issuerBaseURL: "https://js53110.eu.auth0.com",
       tokenSigningAlg: "RS256",
     });
-  };
+  };*/
 
   const accessToken = req.auth!.token;
   try {

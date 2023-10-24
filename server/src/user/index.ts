@@ -15,6 +15,6 @@ const log = () => {
   console.log("IN LOGIN");
 };
 
-router.post("/login", login);
+router.post("/login",jwtCheck, log, login);
 
 export default { path, router };
