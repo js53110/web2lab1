@@ -6,6 +6,9 @@ const urls = {
   get insert() {
     return this.root + "/insert";
   },
+  get update() {
+    return this.root + "/update";
+  },
 };
 
 const insert = async (token, fixture) => {
@@ -13,4 +16,10 @@ const insert = async (token, fixture) => {
   return await customRequest.post(urls.insert, { fixture });
 };
 
-export default { insert };
+const update = async (token, fixture) => {
+  const customRequest = request(token);
+  const res = customRequest.post(urls.update, { fixture });
+  return extractData(res);
+};
+
+export default { insert, update };

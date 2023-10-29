@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { insert } from "./schedule.controller";
+import { insert, update } from "./schedule.controller";
 import { auth } from "express-oauth2-jwt-bearer"; //claimCheck, requireScope, ...
 
 const router = Router();
@@ -11,6 +11,6 @@ const jwtCheck = auth({
   tokenSigningAlg: "RS256",
 });
 
-router.post("/insert", jwtCheck, insert);
+router.post("/insert", jwtCheck, insert).post("/update", jwtCheck, update);
 
 export default { path, router };

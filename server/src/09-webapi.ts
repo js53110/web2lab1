@@ -16,14 +16,6 @@ app.use(bodyParser.json());
 
 app.use("/api", router);
 
-// Set up HTTPS options with your SSL certificate
-const httpsOptions = {
-  key: fs.readFileSync("./server.key"),
-  cert: fs.readFileSync("./server.cert"),
-};
-
-// Create an HTTPS server
-//const httpsServer = https.createServer(httpsOptions, app);
 
 (async () => {
   console.log("Connecting to the database...");

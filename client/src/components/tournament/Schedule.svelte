@@ -3,9 +3,10 @@
   import { scheduleApi } from "../../api/index.js";
 
   export let schedule;
-  export let displayBonusActions = false;;
+  export let displayBonusActions = false;
   export let auth0 = null;
   let saveButton = false;
+  let buttonText = "";
   let score = schedule.score ? schedule.score.split("-") : null;
   let scorep1 = score ? score[0] : null;
   let scorep2 = score ? score[1] : null;
@@ -13,7 +14,15 @@
   const updateScore = () => {
     if (!schedule.played) {
       if (scorep1 != undefined && scorep2 != undefined) {
+        buttonText = "Save";
         saveButton = !saveButton;
+      } else {
+        saveButton = false;
+      }
+    } else if (schedule.played) {
+      if (scorep1 != undefined && scorep2 != undefined) {
+        saveButton = !saveButton;
+        buttonText = "Update";
       } else {
         saveButton = false;
       }
@@ -21,15 +30,37 @@
   };
 
   const saveScore = async () => {
-    let fixture = {
-      id: schedule.id,
-      player1: schedule.player1,
-      player2: schedule.player2,
-      score: scorep1 + "-" + scorep2,
-      tournamentid: schedule.tournamentid,
-      played: true,
-    };
-    await scheduleApi.insert(await auth0.getTokenSilently(), fixture);
+    let fixture;
+    if (schedule.played) {
+      fixture = {
+        id: schedule.id,
+        player1: schedule.player1,
+        player2: schedule.player2,
+        score: scorep1 + "-" + scorep2,
+        tournamentid: schedule.tournamentid,
+        played: true,
+      };
+      await scheduleApi.update(await auth0.getTokenSilently(), fixture);
+      buttonText = "Saving";
+      setTimeout(() => {
+        saveButton = !saveButton;
+      }, 1000);
+    } else {
+      fixture = {
+        id: schedule.id,
+        player1: schedule.player1,
+        player2: schedule.player2,
+        score: scorep1 + "-" + scorep2,
+        tournamentid: schedule.tournamentid,
+        played: true,
+      };
+      await scheduleApi.insert(await auth0.getTokenSilently(), fixture);
+      buttonText = "Saving";
+
+      setTimeout(() => {
+        saveButton = !saveButton;
+      }, 1000);
+    }
   };
 </script>
 
@@ -41,7 +72,7 @@
       class="score"
       type="number"
       bind:value={scorep1}
-      readonly={!displayBonusActions || schedule.played}
+      readonly={!displayBonusActions}
     />
     <p>-</p>
     <input
@@ -55,7 +86,7 @@
   </div>
   {#if displayBonusActions && saveButton}
     <div class="bonusActions" in:slide out:slide>
-      <button on:click={saveScore}>Save</button>
+      <button on:click={saveScore}>{buttonText}</button>
     </div>
   {/if}
 </main>
@@ -72,7 +103,8 @@
 
   .fixture-view {
     width: 90%;
-    border: 1px solid #ff3e00;
+    border: 2px solid #ff3e00;
+    border-radius: 5px;
     margin: 10px 0px 0px 0px;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
@@ -110,6 +142,9 @@
   button {
     margin: 5px;
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   button:hover {
     border-color: #ff3e00;

@@ -1,13 +1,9 @@
 <script>
   import { onMount } from "svelte";
   import authService from "../../authService.js";
-  import { redirect } from "../../utils/router/routing.js";
   import { tournamentApi, userApi } from "../../api/index.js";
   import { authStore } from "../../stores/index.js";
-  import kirkmanPairing from "../../utils/scripts/Schedule.js";
-  import roundRobin from "../../utils/scripts/Schedule.js";
   import TournamentView from "../tournament/TournamentView.svelte";
-  import { slide } from "svelte/transition";
 
   let loginText = "Login";
   let isAuthenticated = false;
@@ -27,16 +23,6 @@
     event.preventDefault();
     competitors = competitors.split(";").map((competitor) => competitor.trim());
     numOfCompetitors = competitors.length;
-
-    console.log("Create schedule");
-
-    let schedule = roundRobin(competitors);
-    schedule.forEach((round) => {
-      console.log("NEW ROUND");
-      round.forEach((match) => {
-        console.log(match[0] + " vs " + match[1]);
-      });
-    });
 
     const tournament = {
       tournamentname: tournamentName,
