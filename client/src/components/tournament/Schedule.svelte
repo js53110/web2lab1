@@ -44,7 +44,8 @@
       buttonText = "Saving";
       setTimeout(() => {
         saveButton = !saveButton;
-      }, 1000);
+        window.location.reload();
+      }, 3000);
     } else {
       fixture = {
         id: schedule.id,
@@ -58,9 +59,9 @@
       buttonText = "Saving";
       setTimeout(() => {
         saveButton = !saveButton;
+        window.location.reload();
       }, 1000);
     }
-    window.location.reload();
   };
 </script>
 
