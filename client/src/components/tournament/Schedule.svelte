@@ -60,6 +60,7 @@
         saveButton = !saveButton;
       }, 1000);
     }
+    window.location.reload();
   };
 </script>
 
