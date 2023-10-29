@@ -23,30 +23,33 @@
     event.preventDefault();
     competitors = competitors.split(";").map((competitor) => competitor.trim());
     numOfCompetitors = competitors.length;
+    if (numOfCompetitors >= 4 && numOfCompetitors <= 8) {
+      const tournament = {
+        tournamentname: tournamentName,
+        pointssystem: pointsSystem,
+        numofcompetitors: numOfCompetitors,
+        creatorid: user.id,
+      };
+      isLoaded = false;
 
-    const tournament = {
-      tournamentname: tournamentName,
-      pointssystem: pointsSystem,
-      numofcompetitors: numOfCompetitors,
-      creatorid: user.id,
-    };
-    isLoaded = false;
-
-    (async () => {
-      tournamentApi.insert(
-        await auth0.getTokenSilently(),
-        tournament,
-        competitors
-      );
-    })().then(() => {
-      tournamentName = "";
-      numOfCompetitors = "";
-      pointsSystem = "";
-      competitors = null;
-      setTimeout(() => {
-        isLoaded = true;
-      }, 1000);
-    });
+      (async () => {
+        tournamentApi.insert(
+          await auth0.getTokenSilently(),
+          tournament,
+          competitors
+        );
+      })().then(() => {
+        tournamentName = "";
+        numOfCompetitors = "";
+        pointsSystem = "";
+        competitors = null;
+        setTimeout(() => {
+          isLoaded = true;
+        }, 1000);
+      });
+    } else {
+      alert("Please select 4 - 8 competitors");
+    }
   }
 
   onMount(async () => {
