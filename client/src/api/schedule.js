@@ -13,7 +13,7 @@ const urls = {
 
 const insert = async (token, fixture) => {
   const customRequest = request(token);
-  const res = await customRequest.post(urls.insert, { fixture });
+  const res = customRequest.post(urls.insert, { fixture });
   return extractData(res);
 };
 

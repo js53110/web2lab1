@@ -56,7 +56,6 @@
       };
       await scheduleApi.insert(await auth0.getTokenSilently(), fixture);
       buttonText = "Saving";
-
       setTimeout(() => {
         saveButton = !saveButton;
       }, 1000);
