@@ -19,7 +19,7 @@ class User extends Model {
   static dbOptions() {
     return {
       modelName: "user",
-      tableName: "users",
+      tableName: "users_lab1",
       timestamps: false,
     };
   }

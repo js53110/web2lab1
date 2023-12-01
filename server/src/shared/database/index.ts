@@ -7,12 +7,12 @@ import CompetitorModel from "../../competitor/competitor.model";
 import ScheduleModel from "../../schedule/schedule.model";
 
 const sequelize = new Sequelize(
-  "web2lab1_0uiy",
-  "web2lab1",
-  "TVAupXWusYv9TA5ppSJdWmOejUrr5gve",
+  "web2lab2_m4n1",
+  "web2lab2",
+  "DOZu47OQr8GMDaJDGNNULANL9ZRD4m6V",
   {
     dialect: "postgres",
-    host: "dpg-ckpvfcu2eoec73fj70dg-a",
+    host: "dpg-cl51ess72pts739pbrbg-a",
     port: 5432,
     ssl: true,
   }
