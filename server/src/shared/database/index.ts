@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
   "DOZu47OQr8GMDaJDGNNULANL9ZRD4m6V",
   {
     dialect: "postgres",
-    host: "dpg-cl51ess72pts739pbrbg-a",
+    host: "dpg-cl51ess72pts739pbrbg-a.oregon-postgres.render.com",
     port: 5432,
     ssl: true,
   }
